@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Русская эмиграция первой волны:</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #667eea 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            font-weight: 300;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-ornament {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ffffff, transparent);
+            margin: 0 auto;
+            border-radius: 2px;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Intro Card */
+        .intro-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .intro-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.95);
+            text-align: justify;
+        }
+
+        /* Person Cards */
+        .person {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 28px;
+            padding: 0;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: slideInScale 0.8s ease-out;
+        }
+
+        .person:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes slideInScale {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .person-header {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 30px;
+            padding: 40px;
+            background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+            border-bottom: 2px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .person-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        .person-photo {
+            width: 180px;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: 4px solid white;
+        }
+
+        .person-photo:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .person-title {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .person-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .profession {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .years {
+            color: #718096;
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .years i {
+            color: #4299e1;
+        }
+
+        /* Content Sections */
+        .content-grid {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .content-section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .biography::before {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+        }
+
+        .reason::before {
+            background: linear-gradient(135deg, #f56565, #e53e3e);
+        }
+
+        .countries::before {
+            background: linear-gradient(135deg, #ed8936, #dd6b20);
+        }
+
+        .burial::before {
+            background: linear-gradient(135deg, #4299e1, #3182ce);
+        }
+
+        .content-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .biography h3 { color: #2f855a; }
+        .reason h3 { color: #c53030; }
+        .countries h3 { color: #c05621; }
+        .burial h3 { color: #2c5282; }
+
+        /* Full width burial section */
+        .burial-section {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 25px 40px;
+            margin: 0 40px 40px 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-left: 4px solid #3182ce;
+        }
+
+        .burial-section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .burial-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #4299e1, #3182ce);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .content-section p {
+            line-height: 1.7;
+            color: #4a5568;
+        }
+
+        .stats-card {
+            background: linear-gradient(135deg, #e6fffa, #b2f5ea);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #81e6d9;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+
+        /* Timeline for emigration routes */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+            border-radius: 1px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px white;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 50px 40px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(20px);
+            border-radius: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .footer em {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            .person-header {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: center;
+                padding: 30px 25px;
+            }
+
+            .person-photo {
+                width: 150px;
+                height: 200px;
+                margin: 0 auto;
+            }
+
+            .content-grid {
+                padding: 25px;
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .intro-card {
+                padding: 30px 25px;
+            }
+
+            .footer {
+                padding: 30px 25px;
+            }
+
+            .burial-section {
+                margin: 0 25px 40px 25px;
+                padding: 25px;
+            }
+        }
+
+        /* Scroll Animations */
+        .person {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUpStagger 0.8s ease-out forwards;
+        }
+
+        .person:nth-child(1) { animation-delay: 0.1s; }
+        .person:nth-child(2) { animation-delay: 0.2s; }
+        .person:nth-child(3) { animation-delay: 0.3s; }
+        .person:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUpStagger {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Loading effect */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .loader.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            text-align: center;
+            color: white;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <p>Загрузка презентации...</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="intro-card">
+            <p><strong>Первая волна русской эмиграции</strong> (1918-1939) была прямым следствием революции 1917 года и последовавшей Гражданской войны. Этот период ознаменовался массовым исходом представителей интеллигенции, дворянства, духовенства и офицерства, которые не могли принять новую советскую власть. Основными направлениями эмиграции стали Константинополь, София, Берлин, Прага и особенно Париж, который стал политической и культурной столицей русского зарубежья.</p>
+        </div>
+
+        <!-- Абрамов Федор Федорович -->
+        <div class="person">
+            <div class="person-header">
+                <img src="https://ic.pics.livejournal.com/pereklichka/18436226/3641382/3641382_original.jpg" alt="Федор Федорович Абрамов" class="person-photo" target="_blank" rel="noopener">
+                <div class="person-title">
+                    <h2>Абрамов Федор Федорович</h2>
+                    <p class="profession"><i class="fas fa-shield-alt"></i> Военачальник Белой армии</p>
+                    <p class="years"><i class="fas fa-calendar-alt"></i> 1870-1963</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-section biography">
+                    <h3><i class="fas fa-book-open"></i> Биография</h3>
+                    <p>Федор Федорович Абрамов происходил из дворян Области Войска Донского, казак станицы Митякинской, сын генерала. Образование получил в престижных военных учебных заведениях: Петровский Полтавский кадетский корпус, Николаевская инженерная школа, Николаевская академия Генерального штаба.</p>
+                    
+                    <p>Участвовал в Русско-японской и Первой мировой войнах, дослужился до чина генерала. В годы Гражданской войны командовал казачьими частями, входившими в состав Донской армии под руководством генерала Врангеля. После поражения Белого движения эвакуировался в Болгарию, затем жил в Югославии.</p>
+                    
+                    <div class="stats-card">
+                        <strong>Воинские звания:</strong> Генерал-майор (1914), Генерал-лейтенант (1918)<br>
+                        <strong>Ордена:</strong> Орден Святого Николая Чудотворца (1921), Золотое оружие "За храбрость"
+                    </div>
+                </div>
+                
+                <div class="content-section reason">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Причины эмиграции</h3>
+                    <p>Участие в <span class="highlight">Белом движении</span> на стороне Донской армии. После поражения в Северной Таврии был вынужден покинуть Россию, так как не мог принять советскую власть. Как офицер Генерального штаба и активный участник Белого движения, не имел возможности остаться в советской России.</p>
+                </div>
+                
+                <div class="content-section countries">
+                    <h3><i class="fas fa-globe-americas"></i> Страны проживания</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">Константинополь (Турция)</div>
+                        <div class="timeline-item">Остров Лемнос</div>
+                        <div class="timeline-item">Болгария</div>
+                        <div class="timeline-item">Югославия</div>
+                        <div class="timeline-item">США (Нью-Джерси)</div>
+                    </div>
+                    <p>После Второй мировой войны, опасаясь за свою безопасность из-за деятельности советской разведки во Франции, переехал в <span class="highlight">США</span>, где жил в доме престарелых в Лейквуде, штат Нью-Джерси.</p>
+                </div>
+            </div>
+            
+            <div class="burial-section">
+                <h3><i class="fas fa-map-marker-alt"></i> Место захоронения</h3>
+                <p>Похоронен на <span class="highlight">Свято-Владимирском православном кладбище</span> в Кассвилле (округ Монмаут), штат Нью-Джерси, США. Умер в 1963 году в возрасте 92 лет от травм, полученных в результате наезда автомобиля.</p>
+            </div>
+        </div>
+
+        <!-- Абрикосов Дмитрий Иванович -->
+        <div class="person">
+            <div class="person-header">
+                <img src="https://static.tildacdn.com/tild3334-3265-4633-a233-646363343365/__.jpg" alt="Дмитрий Иванович Абрикосов" class="person-photo" target="_blank" rel="noopener">
+                <div class="person-title">
+                    <h2>Абрикосов Дмитрий Иванович</h2>
+                    <p class="profession"><i class="fas fa-handshake"></i> Дипломат, последний поверенный в делах России в Японии</p>
+                    <p class="years"><i class="fas fa-calendar-alt"></i> 1876-1951</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-section biography">
+                    <h3><i class="fas fa-book-open"></i> Биография</h3>
+                    <p>Родился в знаменитой купеческой семье Абрикосовых в Москве. Его дед основал кондитерскую фабрику "Товарищество А.И. Абрикосова сыновья" (ныне концерн "Бабаевский"). После смерти родителей в 1882 году воспитывался дядей.</p>
+                    
+                    <p>Образование получил в частной гимназии Креймана и на юридическом факультете Московского университета (1899). С 1900 года служил в Министерстве иностранных дел, работал в посольствах в Пекине, а затем с 1912 года в Токио.</p>
+                    
+                    <p>Особое место в его биографии занимает период 1921-1925 годов, когда он был <span class="highlight">временным поверенным в делах России в Японии</span> - фактически возглавлял "посольство без правительства" до установления дипотношений между Японией и СССР.</p>
+                </div>
+                
+                <div class="content-section reason">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Причины эмиграции</h3>
+                    <p>После Октябрьской революции дипломатическая служба Российской империи прекратила существование. Япония не признавала большевистское правительство, что позволило старому российскому посольству продолжать работу, представляя интересы "белых эмигрантов". Эмиграция стала неизбежной из-за <span class="highlight">краха российской дипломатической службы</span> и принципиального неприятия новой власти.</p>
+                </div>
+                
+                <div class="content-section countries">
+                    <h3><i class="fas fa-globe-americas"></i> Страны проживания</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">Россия</div>
+                        <div class="timeline-item">Китай (Пекин, 1908-1912)</div>
+                        <div class="timeline-item">Япония (Токио, 1912-1946)</div>
+                        <div class="timeline-item">США (1946-1951)</div>
+                    </div>
+                    <p>В Японии жил как частное лицо, но оставался неофициальным представителем русской эмигрантской общины. После Второй мировой войны получил разрешение на переезд в США.</p>
+                </div>
+            </div>
+            
+            <div class="burial-section">
+                <h3><i class="fas fa-map-marker-alt"></i> Место захоронения</h3>
+                <p>Похоронен на <span class="highlight">кладбище Альта-Меса</span> в Пало-Альто, штат Калифорния, США. Мемориальный парк Альта-Меса - это специализированный некрополь для выдающихся личностей Силиконовой долины.</p>
+            </div>
+        </div>
+
+        <!-- Жекулина Аделаида Владимировна (ур. Евреинова) -->
+        <div class="person">
+            <div class="person-header">
+                <img src="https://www.domrz.ru/upload/iblock/825/8259ee639668e22278dfec4e5f7d7519.jpg" alt="Аделаида Владимировна Жекулина (ур. Евреинова)" class="person-photo">
+                <div class="person-title">
+                    <h2>Жекулина Аделаида Владимировна</h2>
+                    <p class="profession"><i class="fas fa-graduation-cap"></i> Педагог, общественный деятель, организатор системы образования русского зарубежья</p>
+                    <p class="years"><i class="fas fa-calendar-alt"></i> 1866-1950</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-section biography">
+                    <h3><i class="fas fa-book-open"></i> Биография</h3>
+                    <p>Аделаида Владимировна Жекулина (урожденная Евреинова) происходила из знатной дворянской семьи. Родилась в поместье Борщов Суджанского уезда Курской губернии 5 января 1866 года. Образование получила в частной гимназии Санкт-Петербурга, изучала иностранные языки у швейцарских гувернанток.</p>
+                    
+                    <p>До эмиграции преподавала в школе для деревенской молодежи на поместье мужа, основала частную женскую гимназию в Киеве, создала Вечерние высшие женские курсы (1905). В годы Первой мировой войны руководила госпиталем, организованным профессорами и слушательницами Высших женских курсов.</p>
+                    
+                    <p>Активный член кадетской партии и Всероссийского союза земств и городов (Согор), финансировала госпиталь для раненых. В эмиграции стала <span class="highlight">одним из ведущих организаторов системы образования русского зарубежья</span>, создавая школы, гимназии и летние лагеря для детей русских эмигрантов.</p>
+                </div>
+                
+                <div class="content-section reason">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Причины эмиграции</h3>
+                    <p>Покинула Киев в 1919 году, когда ее имя попало в расстрельный список большевиков. Была вынуждена бежать из-за <span class="highlight">активной антибольшевистской деятельности</span> и принадлежности к кадетской партии. Эвакуировалась из Новороссийска в Константинополь в марте 1920 года.</p>
+                </div>
+                
+                <div class="content-section countries">
+                    <h3><i class="fas fa-globe-americas"></i> Страны проживания</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">Россия (Курская губ., Киев)</div>
+                        <div class="timeline-item">Турция (Константинополь, 1919-1921)</div>
+                        <div class="timeline-item">Чехословакия (Моравска-Тшебова, 1922-1926)</div>
+                        <div class="timeline-item">Чехословакия (Прага, 1926-1949)</div>
+                        <div class="timeline-item">Бельгия (Брюссель, 1949-1950)</div>
+                    </div>
+                    <p>В Чехословакии развернула масштабную педагогическую деятельность, основав множество образовательных учреждений для русских эмигрантов.</p>
+                </div>
+            </div>
+            
+            <div class="burial-section">
+                <h3><i class="fas fa-map-marker-alt"></i> Место захоронения</h3>
+                <p>Умерла в <span class="highlight">Брюсселе, Бельгия, 25 февраля 1950 года</span> в возрасте 84 лет, находясь в доме дочери Веры Сергеевны. Место захоронения уточняется. Она скончалась вскоре после переезда в Бельгию, куда переехала в 1949 году.</p>
+            </div>
+        </div>
+
+        <!-- Антипова Елена Владимировна -->
+        <div class="person">
+            <div class="person-header">
+                <img src="https://www.domrz.ru/upload/iblock/2d9/2d90a3f1cec7188fcd823a01a6c4c05c.jpg" alt="Елена Владимировна Антипова" class="person-photo" target="_blank" rel="noopener">
+                <div class="person-title">
+                    <h2>Антипова Елена Владимировна</h2>
+                    <p class="profession"><i class="fas fa-graduation-cap"></i> Педагог, психолог, специалист по социальной психологии</p>
+                    <p class="years"><i class="fas fa-calendar-alt"></i> 1892-1974</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-section biography">
+                    <h3><i class="fas fa-book-open"></i> Биография</h3>
+                    <p>Елена Владимировна Антипова происходила из семьи военных - отец был генералом-лейтенантом. Образование получила в престижных европейских учебных заведениях: Коллеж де Франс (1910-1911) и Школа педагогических наук Э. Клапареда в Женеве (1912-1916), где изучала психологию под руководством выдающегося швейцарского психолога.</p>
+                    
+                    <p>В России работала психологом-обследователем в Центральном карантинно-распределительном детском пункте в Петрограде, занимаясь проблемами сирот и беспризорников. Стала одним из первых специалистов в области <span class="highlight">социальной и коррекционной психологии</span> в России.</p>
+                    
+                    <p>В Бразилии проработала 45 лет, став "русским апостолом бразильского образования". Основала школы и приюты для детей с отклонениями в развитии, организовала психологическую службу в бразильской системе образования.</p>
+                </div>
+                
+                <div class="content-section reason">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Причины эмиграции</h3>
+                    <p>Покинула Россию в 1924 году по политическим мотивам. Оказавшись в Европе, получила приглашение от бразильского правительства для организации психологического образования в стране. Причиной эмиграции стало <span class="highlight">неприятие новой политической системы</span> в России и возможность профессиональной самореализации за рубежом.</p>
+                </div>
+                
+                <div class="content-section countries">
+                    <h3><i class="fas fa-globe-americas"></i> Страны проживания</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">Россия</div>
+                        <div class="timeline-item">Швейцария (Женева, 1926-1929)</div>
+                        <div class="timeline-item">Бразилия (1929-1974)</div>
+                    </div>
+                    <p>Профессор Института Ж.-Ж. Руссо в Женеве, затем по контракту с бразильским правительством переехала в штат Минас-Жерайс, где и прошла вся ее дальнейшая научная и педагогическая деятельность.</p>
+                </div>
+            </div>
+            
+            <div class="burial-section">
+                <h3><i class="fas fa-map-marker-alt"></i> Место захоронения</h3>
+                <p>Похоронена в <span class="highlight">Ибирите, штат Минас-Жерайс, Бразилия</span>. В ее честь названы Фонд и Центр, продолжающие ее дело. За свои достижения получила бразильский орден Южного Креста и медаль "За заслуги в области образования".</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Loader
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('fade-out');
+                setTimeout(() => {
+                    document.getElementById('loader').style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.person').forEach(person => {
+            person.style.animationPlayState = 'paused';
+            observer.observe(person);
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add hover effects to content sections
+        document.querySelectorAll('.content-section').forEach(section => {
+            section.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.02)';
+            });
+            
+            section.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
